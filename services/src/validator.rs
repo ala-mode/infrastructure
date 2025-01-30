@@ -280,6 +280,7 @@ impl Validator for Zcashd {
             .stderr(std::process::Stdio::piped());
 
         let mut handle = command.spawn().unwrap();
+        //.expect(&config.zcashd_bin.unwrap().to_str());
 
         logs::write_logs(&mut handle, &logs_dir);
         launch::wait(
@@ -483,7 +484,9 @@ impl Validator for Zebrad {
             .stdout(std::process::Stdio::piped())
             .stderr(std::process::Stdio::piped());
 
-        let mut handle = command.spawn().expect(&config.zebrad_bin);
+        let mut handle = command
+            .spawn()
+            .expect(&config.zebrad_bin.unwrap().to_str().unwrap());
 
         logs::write_logs(&mut handle, &logs_dir);
         launch::wait(
