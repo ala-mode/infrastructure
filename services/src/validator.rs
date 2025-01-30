@@ -259,6 +259,7 @@ impl Validator for Zcashd {
             None => std::process::Command::new(get_testing_bin_path(TestingBinary::Zcashd)),
         };
         println!("zcashd: {:?}", config.zcashd_bin);
+        dbg!("zcashd: {:?}", config.zcashd_bin);
         command
             .args([
                 "--printtoconsole",
@@ -466,6 +467,7 @@ impl Validator for Zebrad {
             None => std::process::Command::new(get_testing_bin_path(TestingBinary::Zebrad)),
         };
         println!("zebrad: {:?}", &config.zebrad_bin);
+        dbg!("zebrad: {:?}", config.zebrad_bin);
         command
             .args([
                 "--config",
