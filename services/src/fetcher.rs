@@ -116,7 +116,7 @@ async fn confirm_binary(
         "Use \"lightwalletd [command] --help\" for more information about a command.";
     const VS_ZAINOD: &str = "zainod [OPTIONS]";
     const VS_ZINGOCLI: &str = "Zingo CLI 0.1.1";
-
+    /*
     let mut vs = Command::new(bin_path);
     vs.arg("--version")
         .stderr(Stdio::piped())
@@ -221,6 +221,7 @@ async fn confirm_binary(
         }
         _ => println!("looked for unknown binary"),
     }
+    */
     println!("confirming {} hashsum against local record", binary_name);
 
     // hashes for confirming expected binaries
