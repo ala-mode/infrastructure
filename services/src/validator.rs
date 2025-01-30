@@ -258,8 +258,9 @@ impl Validator for Zcashd {
             Some(path) => std::process::Command::new(path),
             None => std::process::Command::new(get_testing_bin_path(TestingBinary::Zcashd)),
         };
-        println!("zcashd: {:?}", config.zcashd_bin);
-        dbg!("zcashd: {:?}", config.zcashd_bin);
+        println!("print zcashd: {:?}", config.zcashd_bin);
+        eprintln!("eprint zcashd: {:?}", config.zcashd_bin);
+        dbg!("dbg zcashd: {:?}", config.zcashd_bin);
         command
             .args([
                 "--printtoconsole",
@@ -467,7 +468,8 @@ impl Validator for Zebrad {
             None => std::process::Command::new(get_testing_bin_path(TestingBinary::Zebrad)),
         };
         println!("zebrad: {:?}", &config.zebrad_bin);
-        dbg!("zebrad: {:?}", config.zebrad_bin);
+        eprintln!("zebrad: {:?}", &config.zebrad_bin);
+        dbg!("zebrad: {:?}", &config.zebrad_bin);
         command
             .args([
                 "--config",
@@ -475,13 +477,13 @@ impl Validator for Zebrad {
                     .to_str()
                     .expect("should be valid UTF-8")
                     .to_string()
-                    .as_str(),i.c
+                    .as_str(),
                 "start",
             ])
             .stdout(std::process::Stdio::piped())
             .stderr(std::process::Stdio::piped());
 
-        let mut handle = command.spawn().unwrap();
+        let mut handle = command.spawn().expect(&config.zebrad_bin);
 
         logs::write_logs(&mut handle, &logs_dir);
         launch::wait(
