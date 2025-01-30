@@ -254,10 +254,11 @@ impl Validator for Zcashd {
         )
         .unwrap();
 
-        let mut command = match config.zcashd_bin {
+        let mut command = match config.zcashd_bin.clone() {
             Some(path) => std::process::Command::new(path),
             None => std::process::Command::new(get_testing_bin_path(TestingBinary::Zcashd)),
         };
+        println!("zcashd: {:?}", config.zcashd_bin);
         command
             .args([
                 "--printtoconsole",
@@ -460,10 +461,11 @@ impl Validator for Zebrad {
         )
         .unwrap();
 
-        let mut command = match config.zebrad_bin {
+        let mut command = match config.zebrad_bin.clone() {
             Some(path) => std::process::Command::new(path),
             None => std::process::Command::new(get_testing_bin_path(TestingBinary::Zebrad)),
         };
+        println!("zebrad: {:?}", &config.zebrad_bin);
         command
             .args([
                 "--config",
@@ -471,7 +473,7 @@ impl Validator for Zebrad {
                     .to_str()
                     .expect("should be valid UTF-8")
                     .to_string()
-                    .as_str(),
+                    .as_str(),i.c
                 "start",
             ])
             .stdout(std::process::Stdio::piped())
