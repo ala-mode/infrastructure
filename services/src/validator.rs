@@ -260,7 +260,7 @@ impl Validator for Zcashd {
         };
         println!("print zcashd: {:?}", config.zcashd_bin);
         eprintln!("eprint zcashd: {:?}", config.zcashd_bin);
-        dbg!("dbg zcashd: {:?}", config.zcashd_bin);
+        //dbg!("dbg zcashd: {:?}", config.zcashd_bin);
         command
             .args([
                 "--printtoconsole",
@@ -470,7 +470,7 @@ impl Validator for Zebrad {
         };
         println!("zebrad: {:?}", &config.zebrad_bin);
         eprintln!("zebrad: {:?}", &config.zebrad_bin);
-        dbg!("zebrad: {:?}", &config.zebrad_bin);
+        //dbg!("zebrad: {:?}", &config.zebrad_bin);
         command
             .args([
                 "--config",

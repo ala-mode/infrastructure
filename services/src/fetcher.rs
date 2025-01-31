@@ -22,7 +22,7 @@ pub async fn main() {
         "zcashd",
         "zcash-cli",
         "zebrad",
-        "zingo-cli",
+        //"zingo-cli",
     ];
 
     for n in bin_names {
