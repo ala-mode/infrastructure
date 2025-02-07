@@ -464,6 +464,9 @@ impl Validator for Zebrad {
             Some(path) => std::process::Command::new(path),
             None => std::process::Command::new(get_path_for_binary(SupportedBinaries::Zebrad)),
         };
+        dbg!("dbg path : {:?}", &config.zebrad_bin);
+        eprintln!("eprintln path : {:?}", &config.zebrad_bin);
+        println!("println path : {:?}", &config.zebrad_bin);
         command
             .args([
                 "--config",
