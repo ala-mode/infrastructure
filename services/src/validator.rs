@@ -460,7 +460,7 @@ impl Validator for Zebrad {
         )
         .unwrap();
 
-        let mut command = match config.zebrad_bin {
+        let mut command = match config.zebrad_bin.clone() {
             Some(path) => std::process::Command::new(path),
             None => std::process::Command::new(get_path_for_binary(SupportedBinaries::Zebrad)),
         };
